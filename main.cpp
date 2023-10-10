@@ -1,7 +1,7 @@
 //  IMPORTANTE
 //  PARA COMPILAR EL PROGRAMA SE TIENE QUE USAR EL SIGUIENTE COAMDO
-//  g++ -Wall -Wextra -g3 /../main.cpp /../log.cpp /../fileVect.cpp -o /../output/main   
-//  LOS PUNTOS REPRESENTAN EL PATH DEL ARCHIVO
+//  g++ -Wall -Wextra -g3 main.cpp log.cpp fileVect.cpp -o main  
+//  ESTANDO EN EL FOLDER QUE CONTIENE LOS ARCHIVOS
 
 #include <iostream>
 #include <fstream>
