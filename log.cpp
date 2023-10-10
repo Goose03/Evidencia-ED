@@ -45,7 +45,7 @@ log::log(string line){ //constructor
 }
 
 bool log::operator>(const log& other){ //sobrecarga operador mayor que
-    if (primero != other.primero){
+    if (primero != other.primero){ 
         return primero > other.primero;
     }
     else if(segundo != other.segundo){
