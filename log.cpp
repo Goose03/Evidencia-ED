@@ -59,4 +59,4 @@ log :: log(string line){
 
     //Las separaciones se hacen para poder tener objetos que se puedan
     //utilizar a los limites si solo les damos mes y dia
-};
+}

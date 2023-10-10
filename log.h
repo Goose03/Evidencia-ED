@@ -4,7 +4,6 @@
 #include <iostream>
 #include <string>
 #include <map>
-using namespace std;
 
 struct log{
     int mes;
@@ -14,9 +13,9 @@ struct log{
     int seg;
 
     int totSec;
-    string logLine;
+    std::string logLine;
 
-    log(string line);
+    log(std::string line);
 
 };
 #endif

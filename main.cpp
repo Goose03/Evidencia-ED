@@ -1,3 +1,8 @@
+//  IMPORTANTE
+//  PARA COMPILAR EL PROGRAMA SE TIENE QUE USAR EL SIGUIENTE COAMDO
+//  g++ -Wall -Wextra -g3 /../main.cpp /../log.cpp /../fileVect.cpp -o /../output/main   
+//  LOS PUNTOS REPRESENTAN EL PATH DEL ARCHIVO
+
 #include <iostream>
 #include <fstream>
 #include <vector>
