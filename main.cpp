@@ -19,6 +19,7 @@ void menu(fileVect h){
     int fAmnt = 1;
 
     while(cont == "1"){
+        system("clear");
         system("cls");
 
         string fecha1 = "";
