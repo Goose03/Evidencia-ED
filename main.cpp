@@ -22,19 +22,19 @@ void menu(fileVect h){
         system("clear");
         system("cls");
 
-        string fecha1 = "";
-        string fecha2 = "";
+        string ip1 = "";
+        string ip2 = "";
 
-        cout << "Ingresa la primera fecha de filtro en el siguiente formato: Oct 3" << endl;
-        getline(cin, fecha1, '\n');
+        cout << "Ingresa la primera ip de filtro" << endl;
+        getline(cin, ip1, '\n');
 
-        cout << "Ingresa la segunda fecha limite en el mismo formato" << endl;
-        getline(cin, fecha2, '\n');
+        cout << "Ingresa la ip limite" << endl;
+        getline(cin, ip2, '\n');
 
-        log f1(fecha1);
-        log f2(fecha2);
+        log f1(ip1);
+        log f2(ip2);
 
-        if(f1.totSec > f2.totSec){
+        if(f1 > f2){
             log tmp = f1;
             f1 = f2;
             f2 = tmp;
