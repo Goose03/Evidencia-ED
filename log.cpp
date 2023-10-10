@@ -10,15 +10,15 @@ log::log(string line){ //constructor
     this -> logLine = line;
 
     this -> dia = stoi(line.substr(4, 2));
-    if(line.size() > 18){
-        if(dia > 9){
+    if(line.size() > 18){ //revisa si la linea es solo un ip o una linea completa de la bitacora
+        if(dia > 9){ //obtiene la primera posicion de la ip en base a el numero de digitos de la fecha
             this -> ip = line.substr(16, findPuntos(line, ':', 3)- 11);
         }
         else{
             this -> ip = line.substr(15, findPuntos(line, ':', 3)- 10);
         }
 
-        this -> primero = stoi(ip.substr(0, findPuntos(ip, '.', 1)));
+        this -> primero = stoi(ip.substr(0, findPuntos(ip, '.', 1))); //se asignan los valores de la ip a los atributos
 
         this -> segundo = stoi(ip.substr(findPuntos(ip, '.', 1) + 1, findPuntos(ip, '.', 2)));
 
@@ -28,11 +28,11 @@ log::log(string line){ //constructor
 
         this -> port = stoi(ip.substr(findPuntos(ip, ':', 1) + 1, 4));
     }
-    else{
+    else{ // caso en donde se le pasa solo la ip
 
         this -> ip = line;
 
-        this -> primero = stoi(ip.substr(0, findPuntos(ip, '.', 1)));
+        this -> primero = stoi(ip.substr(0, findPuntos(ip, '.', 1)));//se asignan los valores de la ip a los atributos
 
         this -> segundo = stoi(ip.substr(findPuntos(ip, '.', 1) + 1, findPuntos(ip, '.', 2)));
 
@@ -98,7 +98,7 @@ bool log::operator<=(const log& other) { //sobrecarga operador menor o igual que
     }
 }
 
-int log::findPuntos(string str, char target, int numAparicion) { //funcion que encuentra la po
+int log::findPuntos(string str, char target, int numAparicion) { //funcion que encuentra la posicion de un caracter en un string
     int count = 0;
     for (int i = 0; i < str.length(); i++) {
         if (str[i] == target) {
