@@ -1,67 +1,46 @@
-//  IMPORTANTE
-//  PARA COMPILAR EL PROGRAMA SE TIENE QUE USAR EL SIGUIENTE COAMDO
-//  g++ -Wall -Wextra -g3 main.cpp log.cpp fileVect.cpp -o main  
-//  ESTANDO EN EL FOLDER QUE CONTIENE LOS ARCHIVOS
-
 #include <iostream>
 #include <fstream>
-#include <vector>
-#include <string>
-
-#include "log.h"
-#include "fileVect.h"
+#include "fileBitacora.h"
+#include "fileBitacora.cpp"
 
 using namespace std;
 
+int main() {
+    FileBitacora bitacora;
+    ifstream unSortedFile("bitacora.txt");
 
-void menu(fileVect h){
-    string cont = "1"; // continue
-    int fAmnt = 1;
-
-    while(cont == "1"){
-        system("clear");
-        system("cls");
-
-        string ip1 = "";
-        string ip2 = "";
-
-        cout << "Ingresa la primera ip de filtro" << endl;
-        getline(cin, ip1, '\n');
-
-        cout << "Ingresa la ip limite" << endl;
-        getline(cin, ip2, '\n');
-
-        log f1(ip1);
-        log f2(ip2);
-
-        if(f1 > f2){
-            log tmp = f1;
-            f1 = f2;
-            f2 = tmp;
-        }
-
-        h.fileWrite(f1, f2, fAmnt);
-
-        cout << "Tu archivo deberia de aparecer en la carpeta de output" << endl;
-        cout << "Escribe 1 si deseas continuar, 0 si no" << endl;
-
-        fAmnt++;
-
-        getline(cin, cont);
+    if (!unSortedFile) {
+        cout << "No se pudo abrir el archivo bitacora.txt" << endl;
+        return 1;
     }
-}
 
+    string date, time, ip, port, message;
+    while (unSortedFile >> date >> time >> ip >> message) {
+        getline(unSortedFile, message);
+        bitacora.addRegistro(date, time, ip, message);
+    }
 
-int main(){
-    system("cls");
+    unSortedFile.close();
 
-    fileVect h("bitacora.txt");
+    bitacora.sortIP();
 
-    h.ordenaMerge();
+    int search = 1;
+    string startIP, endIP;
+    char continuar = 'S';
 
-    h.fileWrite();
+    while (continuar == 'S' || continuar == 's') {
+        cout << "Ingrese la IP de inicio de búsqueda (formato ###.###.###.###): ";
+        cin >> startIP;
+        cout << "Ingrese la IP de fin de búsqueda (formato ###.###.###.###): ";
+        cin >> endIP;
 
-    menu(h);
+        bitacora.searchIP(startIP, endIP, search);
+
+        cout << "¿Desea realizar otra búsqueda? (S/N): ";
+        cin >> continuar;
+
+        search++;
+    }
 
     return 0;
 }
